@@ -11,6 +11,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tsx src/index.ts",
     "prepare": "husky"
   },
   "private": true,
@@ -23,6 +24,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.1.5",
     "prettier": "^3.6.2",
+    "tsx": "^4.20.5",
     "typescript-eslint": "^8.41.0"
   }
 }
