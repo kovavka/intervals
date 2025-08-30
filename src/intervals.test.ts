@@ -1,5 +1,7 @@
-describe('Intervals', () => {
+import { findIntervals } from './intervals'
+
+describe('Find intervals', () => {
   it('test', () => {
-    expect(0).toBe(0)
+    expect(findIntervals([])).toEqual([])
   })
 })
