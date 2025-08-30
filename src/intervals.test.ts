@@ -152,12 +152,12 @@ describe('Find intervals', () => {
   })
 
   it('Should support negative numbers', () => {
-    expect(findIntervals([[-100, -10]], [[-200, -50]])).toEqual([[-50, -10]])
+    expect(findIntervals([[-100, -10]], [[-200, -50]])).toEqual([[-49, -10]])
   })
 
   it('Should support negative-positive intervals', () => {
     expect(findIntervals([[-100, 100]], [[-50, 20]])).toEqual([
-      [-100, -49],
+      [-100, -51],
       [21, 100],
     ])
   })
