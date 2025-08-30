@@ -1,7 +1,6 @@
 name: branch-checks
 
-on:
-  push
+on: push
 
 jobs:
   lint:
