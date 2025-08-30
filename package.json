@@ -1,0 +1,30 @@
+{
+  "name": "intervals",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "lint-staged": {
+    "**/*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tsx src/index.ts",
+    "prepare": "husky"
+  },
+  "private": true,
+  "dependencies": {
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.34.0",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.5",
+    "typescript-eslint": "^8.41.0"
+  }
+}
