@@ -19,7 +19,8 @@ export function findIntervals(
     })
     allEvents.push({
       type: 'include-end',
-      value: end,
+      // making interval's end non-inclusive, so it works in the case when we have 2 touching intervals
+      value: end + 1,
     })
   })
 
@@ -30,7 +31,8 @@ export function findIntervals(
     })
     allEvents.push({
       type: 'exclude-end',
-      value: end,
+      // making interval's end non-inclusive
+      value: end + 1,
     })
   })
 
@@ -57,7 +59,7 @@ export function findIntervals(
       case 'include-end':
         if (includesOpenCount === 1 && excludesOpenCount === 0 && includesStart !== null) {
           // save only when it's the last pending interval
-          result.push([includesStart, value])
+          result.push([includesStart, value - 1]) // -1 since the end is non-inclusive
         }
         includesOpenCount--
         break
@@ -73,8 +75,8 @@ export function findIntervals(
         break
       case 'exclude-end':
         if (includesOpenCount !== 0 && excludesOpenCount === 1) {
-          // otherwise some of the excludes are still pending
-          includesStart = value + 1
+          // since the end is non-inclusive, we can start interval with the same value
+          includesStart = value
         }
         excludesOpenCount--
         break

@@ -58,6 +58,18 @@ describe('Find intervals', () => {
     ).toEqual([[10, 5000]])
   })
 
+  it('Should concat touching intervals', () => {
+    expect(
+      findIntervals(
+        [
+          [10, 20],
+          [20, 100],
+        ],
+        null
+      )
+    ).toEqual([[10, 100]])
+  })
+
   describe('Should return the same interval when excludes is not overlapping with includes', () => {
     it('When excludes is to the right of includes', () => {
       expect(findIntervals([[10, 20]], [[30, 50]])).toEqual([[10, 20]])
