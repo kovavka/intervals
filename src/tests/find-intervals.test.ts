@@ -1,4 +1,4 @@
-import { findIntervals } from './find-intervals'
+import { findIntervals } from '../core/find-intervals'
 
 describe('Find intervals', () => {
   describe('No included intervals', () => {

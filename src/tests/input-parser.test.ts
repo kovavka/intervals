@@ -1,4 +1,4 @@
-import { parseIntervalsInput } from './input'
+import { parseIntervalsInput } from '../lib/input-parser'
 
 describe('Parse intervals input', () => {
   describe('Should return undefined', () => {
