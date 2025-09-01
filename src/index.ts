@@ -11,21 +11,20 @@ program.parse()
 
 const options = program.opts()
 
-let includedIntervals: Interval[] | undefined | null
-let excludedIntervals: Interval[] | undefined | null
+let includedIntervals: Interval[] | undefined
+let excludedIntervals: Interval[] | undefined
 
 try {
   includedIntervals = parseIntervalsInput(options.include)
   excludedIntervals = parseIntervalsInput(options.exclude)
 } catch (error) {
   if (error instanceof Error) {
-    console.error(error.message)
+    console.error('Error:', error.message)
   } else {
     console.error(error)
   }
   process.exit(1)
 }
 
-console.log('Non overlapping intervals:')
 const result = findIntervals(includedIntervals, excludedIntervals)
-console.log(result)
+console.log(JSON.stringify(result))

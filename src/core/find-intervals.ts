@@ -6,10 +6,10 @@ type IntervalEvent = {
 }
 
 export function findIntervals(
-  includes: Interval[] | null | undefined,
-  excludes: Interval[] | null | undefined
+  includes?: Interval[],
+  excludes?: Interval[] | undefined
 ): Interval[] {
-  if (includes == null || includes.length === 0) return []
+  if (includes === undefined || includes.length === 0) return []
 
   const allEvents: IntervalEvent[] = []
   includes.forEach(([start, end]) => {

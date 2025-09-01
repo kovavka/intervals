@@ -5,14 +5,8 @@ describe('Find intervals', () => {
     it('Should return empty array when includes is empty', () => {
       expect(findIntervals([], [[1, 5]])).toEqual([])
     })
-    it('Should return empty array when includes is null', () => {
-      expect(findIntervals(null, [[1, 5]])).toEqual([])
-    })
     it('Should return empty array when includes is undefined', () => {
       expect(findIntervals(undefined, [[1, 5]])).toEqual([])
-    })
-    it('Should return empty array when includes and excludes are null', () => {
-      expect(findIntervals(null, null)).toEqual([])
     })
     it('Should return empty array when includes and excludes are undefined', () => {
       expect(findIntervals(undefined, undefined)).toEqual([])
@@ -23,9 +17,6 @@ describe('Find intervals', () => {
     it('Should return the same interval when excludes is empty', () => {
       expect(findIntervals([[1, 5]], [])).toEqual([[1, 5]])
     })
-    it('Should return the same interval when excludes is null', () => {
-      expect(findIntervals([[1, 5]], null)).toEqual([[1, 5]])
-    })
     it('Should return the same interval when excludes is undefined', () => {
       expect(findIntervals([[1, 5]], undefined)).toEqual([[1, 5]])
     })
@@ -33,13 +24,10 @@ describe('Find intervals', () => {
 
   it('Should return intervals in a sorted order', () => {
     expect(
-      findIntervals(
-        [
-          [10, 50],
-          [1, 6],
-        ],
-        null
-      )
+      findIntervals([
+        [10, 50],
+        [1, 6],
+      ])
     ).toEqual([
       [1, 6],
       [10, 50],
@@ -48,13 +36,10 @@ describe('Find intervals', () => {
 
   it('Should concat intersecting intervals', () => {
     expect(
-      findIntervals(
-        [
-          [50, 5000],
-          [10, 100],
-        ],
-        null
-      )
+      findIntervals([
+        [50, 5000],
+        [10, 100],
+      ])
     ).toEqual([[10, 5000]])
   })
 
