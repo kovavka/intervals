@@ -1,4 +1,4 @@
-import { findIntervals } from './intervals'
+import { findIntervals } from '../core/find-intervals'
 
 describe('Find intervals', () => {
   describe('No included intervals', () => {
@@ -8,8 +8,14 @@ describe('Find intervals', () => {
     it('Should return empty array when includes is null', () => {
       expect(findIntervals(null, [[1, 5]])).toEqual([])
     })
+    it('Should return empty array when includes is undefined', () => {
+      expect(findIntervals(undefined, [[1, 5]])).toEqual([])
+    })
     it('Should return empty array when includes and excludes are null', () => {
       expect(findIntervals(null, null)).toEqual([])
+    })
+    it('Should return empty array when includes and excludes are undefined', () => {
+      expect(findIntervals(undefined, undefined)).toEqual([])
     })
   })
 
@@ -19,6 +25,9 @@ describe('Find intervals', () => {
     })
     it('Should return the same interval when excludes is null', () => {
       expect(findIntervals([[1, 5]], null)).toEqual([[1, 5]])
+    })
+    it('Should return the same interval when excludes is undefined', () => {
+      expect(findIntervals([[1, 5]], undefined)).toEqual([[1, 5]])
     })
   })
 
