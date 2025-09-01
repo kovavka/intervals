@@ -16,9 +16,6 @@
     "prepare": "husky"
   },
   "private": true,
-  "dependencies": {
-    "typescript": "^5.9.2"
-  },
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "eslint": "^9.34.0",
@@ -29,6 +26,10 @@
     "prettier": "^3.6.2",
     "ts-jest": "^29.4.1",
     "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
     "typescript-eslint": "^8.41.0"
+  },
+  "dependencies": {
+    "commander": "^14.0.0"
   }
 }

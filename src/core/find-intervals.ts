@@ -1,4 +1,4 @@
-export type Interval = [number, number]
+import { Interval } from './types'
 
 type IntervalEvent = {
   type: 'include-start' | 'include-end' | 'exclude-start' | 'exclude-end'
@@ -6,10 +6,10 @@ type IntervalEvent = {
 }
 
 export function findIntervals(
-  includes: Interval[] | null,
-  excludes: Interval[] | null
+  includes: Interval[] | null | undefined,
+  excludes: Interval[] | null | undefined
 ): Interval[] {
-  if (includes === null || includes.length === 0) return []
+  if (includes == null || includes.length === 0) return []
 
   const allEvents: IntervalEvent[] = []
   includes.forEach(([start, end]) => {
