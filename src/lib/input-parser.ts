@@ -3,7 +3,7 @@ import { Interval } from '../core/types'
 const ERROR_INVALID_ARRAY = 'is not a valid JSON array'
 const ERROR_INVALID_INTERVAL = 'is not a valid interval'
 
-const getInvalidArrayError = (input: string): string => `"${input}" ${ERROR_INVALID_ARRAY}`
+const getInvalidArrayError = (input: string) => `"${input}" ${ERROR_INVALID_ARRAY}`
 
 function isValidInterval(interval: unknown): boolean {
   if (!Array.isArray(interval) || interval.length !== 2) {
