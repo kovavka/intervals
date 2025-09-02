@@ -20,7 +20,7 @@ export function findIntervals(
     allEvents.push({
       type: 'include-end',
       // making interval's end non-inclusive, so it works in the case when we have 2 touching intervals
-      value: end + 1,
+      value: end,
     })
   })
 
