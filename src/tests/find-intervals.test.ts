@@ -45,13 +45,10 @@ describe('Find intervals', () => {
 
   it('Should concat touching intervals', () => {
     expect(
-      findIntervals(
-        [
-          [10, 20],
-          [20, 100],
-        ],
-        null
-      )
+      findIntervals([
+        [10, 20],
+        [20, 100],
+      ])
     ).toEqual([[10, 100]])
   })
 
