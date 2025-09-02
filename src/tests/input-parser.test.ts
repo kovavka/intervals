@@ -10,12 +10,6 @@ describe('Parse intervals input', () => {
     })
   })
 
-  describe('Should return null', () => {
-    it('When input is null JSON', () => {
-      expect(parseIntervalsInput('null')).toEqual(null)
-    })
-  })
-
   describe('Should return empty array', () => {
     it('When input is empty array JSON', () => {
       expect(parseIntervalsInput('[]')).toEqual([])
@@ -32,6 +26,9 @@ describe('Parse intervals input', () => {
       })
       it('When input is not an JSON array', () => {
         expect(() => parseIntervalsInput('5')).toThrow('"5" is not a valid JSON array')
+      })
+      it('When input is null JSON', () => {
+        expect(() => parseIntervalsInput('null')).toThrow('"null" is not a valid JSON array')
       })
     })
 
@@ -65,10 +62,20 @@ describe('Parse intervals input', () => {
       it('When interval contains an object', () => {
         expect(() => parseIntervalsInput('[[1, {}]]')).toThrow('[1,{}] is not a valid interval')
       })
-      it('When interval value is bigger than safe integer', () => {
+      it('When interval value is bigger than max safe integer', () => {
         expect(() =>
           parseIntervalsInput('[[1, 923939920390329023902390239032902390]]')
         ).toThrow('[1,9.23939920390329e+35] is not a valid interval')
+      })
+      it('When interval value is less than min safe integer', () => {
+        expect(() =>
+          parseIntervalsInput('[[-923939920390329023902390239032902390, 1]]')
+        ).toThrow('[-9.23939920390329e+35,1] is not a valid interval')
+      })
+      it('When interval value is not integer', () => {
+        expect(() => parseIntervalsInput('[[1, 5.2]]')).toThrow(
+          '[1,5.2] is not a valid interval'
+        )
       })
       it("When interval's end is less than start", () => {
         expect(() => parseIntervalsInput('[[5, 2]]')).toThrow('[5,2] is not a valid interval')

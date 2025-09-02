@@ -15,7 +15,14 @@ function isValidInterval(interval: unknown): boolean {
     return false
   }
 
-  if (start > Number.MAX_SAFE_INTEGER || end > Number.MAX_SAFE_INTEGER) {
+  if (
+    start > Number.MAX_SAFE_INTEGER ||
+    start < Number.MIN_SAFE_INTEGER ||
+    end > Number.MAX_SAFE_INTEGER ||
+    end < Number.MIN_SAFE_INTEGER ||
+    !Number.isInteger(start) ||
+    !Number.isInteger(end)
+  ) {
     return false
   }
 
@@ -26,7 +33,7 @@ function isValidInterval(interval: unknown): boolean {
   return true
 }
 
-export function parseIntervalsInput(input: string | undefined): Interval[] | null | undefined {
+export function parseIntervalsInput(input: string | undefined): Interval[] | undefined {
   if (input === undefined || input === '') {
     return undefined
   }
@@ -36,10 +43,6 @@ export function parseIntervalsInput(input: string | undefined): Interval[] | nul
     parsed = JSON.parse(input)
   } catch {
     throw new Error(getInvalidArrayError(input))
-  }
-
-  if (parsed === null) {
-    return null
   }
 
   if (!Array.isArray(parsed)) {
